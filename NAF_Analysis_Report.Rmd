@@ -1,9 +1,10 @@
 ---
-title: 'Attentuation Factors Analysis Report '
+title: 'National Attentuation Factors Analysis Report'
 output:
-  html_document: default
-  word_document: default
-date: "2025-05-07"
+  #html_document: default
+  #word_document: default
+  output: github_document
+date: "2025-06-19"
 ---
 
 ```{r setup, include=FALSE}
@@ -18,20 +19,18 @@ library(openxlsx)
 
 ```{r inputData, include=TRUE,echo=T}
 
-
-#data<-read.csv("National Empirical VI Database_2025-8-10_AF correlations.v2.csv",check.names = FALSE,as.is=FALSE)
-#names(data)<-gsub(" ","_",names(data))
-#tr<-read.xlsx("temp.xlsx","CORRELATIONS (2)",check.names=FALSE,sep.names = "_")
-#data<-openxlsx::read.xlsx("temp.xlsx","CORRELATIONS (2)",check.names=FALSE,sep.names = "_")
 data<-openxlsx::read.xlsx("ANOVA_Raw Data.xlsx",sheet="ANOVA Data",check.names=FALSE,sep.names = "_")
 data$`LOG(AF)`<-log10(data$AF)
 data<-data[,names(data)!="AF"] #For simplicity, omit AF column as we are modelling log_10(AF).
+
+
+#Establishing and ordering the correct factor levels for each categorical variable. 
 
 data$CHEMICAL_TYPE<-factor(as.character(data$CHEMICAL_TYPE),levels=c("PCE","TCE","PCE and TCE"))
 
 data$SAMPLE_TYPE<-factor(trimws(as.character(data$SAMPLE_TYPE)))
 data$SAMPLE_TYPE<-factor(as.character(data$SAMPLE_TYPE),levels=c("SUBSLAB","NEAR-SLAB","ALL"))
-#data$BUILDING_TYPE<-factor(as.character(data$BUILDING_TYPE),levels=c("COMMERCIAL","INDUSTRIAL","INSTITUTIONAL","NON-RESIDENTIAL","NON-RESIDENTIAL (SAME BLDG)","RESIDENTIAL","RESIDENTIAL (SAME BLDG)","ALL"))
+
 data$BUILDING_TYPE<-factor(as.character(data$BUILDING_TYPE),levels=c("COMMERCIAL","INDUSTRIAL","INSTITUTIONAL","NON-RESIDENTIAL","RESIDENTIAL","ALL"))
 data$FOUNDATION_TYPE<-factor(as.character(data$FOUNDATION_TYPE),levels=c("BASEMENT","CRAWL SPACE/EARTHEN FLOOR","SLAB-ON-GRADE","ALL"))
 data$HVAC_OPERATION<-factor(as.character(data$HVAC_OPERATION),levels=c("HVAC-OFF","HVAC-ON","ALL"))
@@ -48,7 +47,7 @@ data$LATERAL_SEPARATION_Delta_BETWEEN_CIA_and_CSSG_SAMPLING<-factor(as.character
 
 data$CSSG_ASSUMPTION<-factor(as.character(data$CSSG_ASSUMPTION),levels=c("AVERAGE CSSG","MAXIMUM CSSG"))
 
-#data$x<-rnorm(nrow(data))
+
 summary(data)
 ```
 
