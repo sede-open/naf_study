@@ -1,9 +1,9 @@
 ---
-title: 'National Attentuation Factors Analysis Report'
 output:
-  #html_document: default
+  html_document: default
   #word_document: default
   output: github_document
+title: 'National Attentuation Factors Analysis Report'
 date: "2025-06-19"
 ---
 
@@ -44,8 +44,6 @@ data$CSSG_ASSUMPTION<-factor(as.character(data$CSSG_ASSUMPTION),levels=c("AVERAG
 data$CSSG_SAMPLE_DEPTH_Delta<-factor(as.character(data$CSSG_SAMPLE_DEPTH_Delta),levels=c("SUBSLAB (z < 3 ft)","3 <= z <= 5 ft","5 < z <=15","z <= 15 ft","z > 15 ft"))
 data$TIME_Delta_BETWEEN_CIA_and_CSSG_SAMPLING<-factor(as.character(data$TIME_Delta_BETWEEN_CIA_and_CSSG_SAMPLING),levels=c("t <= 1 day","1 < t <= 14 days","14 < t <= 60 days","t > 60 days","t < 92 days"))
 data$LATERAL_SEPARATION_Delta_BETWEEN_CIA_and_CSSG_SAMPLING<-factor(as.character(data$LATERAL_SEPARATION_Delta_BETWEEN_CIA_and_CSSG_SAMPLING),levels=c("x <= 10 ft","10 < x <=50","50 < x <=100","x < 110 ft"))
-
-data$CSSG_ASSUMPTION<-factor(as.character(data$CSSG_ASSUMPTION),levels=c("AVERAGE CSSG","MAXIMUM CSSG"))
 
 
 summary(data)
