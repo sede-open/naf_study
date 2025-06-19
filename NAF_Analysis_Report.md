@@ -82,11 +82,31 @@ summary(data)
 
 ### Independent 1 by 1 Boxplots
 
+``` r
+YVar<-"LOG(AF)"
+VarNames<-setdiff(names(data),YVar)
+lmall<-lm(`LOG(AF)`~.,data)
+
+
+for(i in 1:length(VarNames)){
+
+  print(ggplot(data, aes(!!sym(VarNames[i]), `LOG(AF)`)) + geom_boxplot(fill = 'grey')+ theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)))
+  
+}
+```
+
 ![](NAF_Analysis_Report_files/figure-gfm/boxplot-1.png)<!-- -->![](NAF_Analysis_Report_files/figure-gfm/boxplot-2.png)<!-- -->![](NAF_Analysis_Report_files/figure-gfm/boxplot-3.png)<!-- -->![](NAF_Analysis_Report_files/figure-gfm/boxplot-4.png)<!-- -->![](NAF_Analysis_Report_files/figure-gfm/boxplot-5.png)<!-- -->![](NAF_Analysis_Report_files/figure-gfm/boxplot-6.png)<!-- -->![](NAF_Analysis_Report_files/figure-gfm/boxplot-7.png)<!-- -->![](NAF_Analysis_Report_files/figure-gfm/boxplot-8.png)<!-- -->![](NAF_Analysis_Report_files/figure-gfm/boxplot-9.png)<!-- -->![](NAF_Analysis_Report_files/figure-gfm/boxplot-10.png)<!-- -->![](NAF_Analysis_Report_files/figure-gfm/boxplot-11.png)<!-- -->![](NAF_Analysis_Report_files/figure-gfm/boxplot-12.png)<!-- -->![](NAF_Analysis_Report_files/figure-gfm/boxplot-13.png)<!-- -->
 
 ## Statistical Modelling
 
 ### Linear Modelling and ANOVA (Analysis of Variance)
+
+``` r
+YVar<-"LOG(AF)"
+VarNames<-setdiff(names(data),YVar)
+lmall<-lm(`LOG(AF)`~.,data)
+anova(lmall)
+```
 
     ## Analysis of Variance Table
     ## 
@@ -124,7 +144,14 @@ summary(data)
     ## ---
     ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Removing insignificant variables:
+#### Removing insignificant variables:
+
+``` r
+InSignifVars<-gsub("`","",as.character(na.omit(rownames(as.data.frame(anova(lmall)))[as.vector(as.data.frame(anova(lmall))["Pr(>F)"]>0.05)])))
+SignifVars<-gsub("`","",as.character(na.omit(rownames(as.data.frame(anova(lmall)))[as.vector(as.data.frame(anova(lmall))["Pr(>F)"]<0.05)])))
+lmSignif<- lm(`LOG(AF)`~.,data[,!names(data) %in% InSignifVars])
+anova(lmSignif)
+```
 
     ## Analysis of Variance Table
     ## 
@@ -154,6 +181,15 @@ Removing insignificant variables:
     ## ---
     ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Investigate individual effects:
+#### Investigate individual effects using the R “effects” package:
+
+``` r
+for(i in SignifVars){
+
+  plot(predictorEffects(predictor=i,mod=lmSignif), axes=list(grid=TRUE,
+                      x=list(rotate=45,cex=0.75)),lines=list(lty=0),ylim=c(-4.5,-2))
+  
+}
+```
 
 ![](NAF_Analysis_Report_files/figure-gfm/Stamod4-1.png)<!-- -->![](NAF_Analysis_Report_files/figure-gfm/Stamod4-2.png)<!-- -->![](NAF_Analysis_Report_files/figure-gfm/Stamod4-3.png)<!-- -->![](NAF_Analysis_Report_files/figure-gfm/Stamod4-4.png)<!-- -->![](NAF_Analysis_Report_files/figure-gfm/Stamod4-5.png)<!-- -->![](NAF_Analysis_Report_files/figure-gfm/Stamod4-6.png)<!-- -->![](NAF_Analysis_Report_files/figure-gfm/Stamod4-7.png)<!-- -->![](NAF_Analysis_Report_files/figure-gfm/Stamod4-8.png)<!-- -->![](NAF_Analysis_Report_files/figure-gfm/Stamod4-9.png)<!-- -->

@@ -56,7 +56,7 @@ summary(data)
 
 
 
-```{r boxplot, echo=FALSE}
+```{r boxplot, echo=TRUE}
 
 YVar<-"LOG(AF)"
 VarNames<-setdiff(names(data),YVar)
@@ -78,7 +78,7 @@ for(i in 1:length(VarNames)){
 ### Linear Modelling and ANOVA (Analysis of Variance)
 
 
-```{r Stamod1, echo=FALSE}
+```{r Stamod1, echo=TRUE}
 YVar<-"LOG(AF)"
 VarNames<-setdiff(names(data),YVar)
 lmall<-lm(`LOG(AF)`~.,data)
@@ -86,10 +86,9 @@ anova(lmall)
 ```
 
 
-Removing insignificant variables: 
-```{r Stamod2, echo=FALSE}
+#### Removing insignificant variables: 
+```{r Stamod2, echo=TRUE}
 InSignifVars<-gsub("`","",as.character(na.omit(rownames(as.data.frame(anova(lmall)))[as.vector(as.data.frame(anova(lmall))["Pr(>F)"]>0.05)])))
-#InSignifVars<-setdiff(InSignifVars,"x")
 SignifVars<-gsub("`","",as.character(na.omit(rownames(as.data.frame(anova(lmall)))[as.vector(as.data.frame(anova(lmall))["Pr(>F)"]<0.05)])))
 lmSignif<- lm(`LOG(AF)`~.,data[,!names(data) %in% InSignifVars])
 anova(lmSignif)
@@ -100,18 +99,16 @@ anova(lmSignif)
 
 
 
-Investigate individual effects: 
+#### Investigate individual effects using the R "effects" package: 
 
-```{r Stamod4, echo=FALSE}
+```{r Stamod4, echo=TRUE}
 
 
 
 for(i in SignifVars){
 
   plot(predictorEffects(predictor=i,mod=lmSignif), axes=list(grid=TRUE,
-                                       #y=list(lab="Prob(Volunteer)"),
-                                       x=list(rotate=45,cex=0.75)),
-       lines=list(lty=0),ylim=c(-4.5,-2))
+                      x=list(rotate=45,cex=0.75)),lines=list(lty=0),ylim=c(-4.5,-2))
   
 }
 
