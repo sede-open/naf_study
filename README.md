@@ -9,4 +9,6 @@ A comprehensive study was undertaken to derive more scientifically defensible ri
 
 ### Prerequisites
 The analysis is conducted using the open source programming language R - see <https://cran.r-project.org/> for full installation details. It is recommended to use the RStudio Integrated Development Environment to run this analysis using R - See <https://posit.co/downloads/>. 
-The underlying ANOVA data set is available to download in Excel format [here](https://github.com/sede-open/naf_study/blob/main/ANOVA_Raw%20Data.xlsx). The analysis is conducted using the open source programming language R - see <https://cran.r-project.org/> for full details. 
+
+### Analysis
+The underlying ANOVA data set is available to download in Excel format [here](https://github.com/sede-open/naf_study/blob/main/ANOVA_Raw%20Data.xlsx).
