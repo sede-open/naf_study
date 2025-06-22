@@ -20,4 +20,4 @@ install.packages("openxlsx")
 The underlying ANOVA data set is available to download in Excel format [here](https://github.com/sede-open/naf_study/blob/main/ANOVA_Raw%20Data.xlsx).
 
 
-The [NA_Analysis_Report.R](<)https://github.com/sede-open/naf_study/blob/main/NAF_Analysis_Report.R) is a R script to perform the end to end ANOVA. 
+[NA_Analysis_Report.R](https://github.com/sede-open/naf_study/blob/main/NAF_Analysis_Report.R) is the R script to perform the end to end ANOVA. 
