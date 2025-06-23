@@ -1,7 +1,6 @@
-## ----setup, include=FALSE-----------------------------------------------------------------------------------------------------------------------------------------
-knitr::opts_chunk$set(echo = FALSE)
+## ----setup, include=TRUE,echo=TRUE--------------------------------------------------------------------------------------------------------------------------------
 library(ggplot2)
-library(effects)
+suppressPackageStartupMessages(library(effects))
 library(openxlsx)
 
 
@@ -14,7 +13,7 @@ data<-data[,names(data)!="AF"] #For simplicity, omit AF column as we are modelli
 
 #Establishing and ordering the correct factor levels for each categorical variable. 
 
-data$CHEMICAL_TYPE<-factor(as.character(data$CHEMICAL_TYPE),levels=c("PCE","TCE","PCE and TCE"))
+data$CHEMICAL<-factor(as.character(data$CHEMICAL),levels=c("PCE","TCE","PCE and TCE"))
 
 data$SAMPLE_TYPE<-factor(trimws(as.character(data$SAMPLE_TYPE)))
 data$SAMPLE_TYPE<-factor(as.character(data$SAMPLE_TYPE),levels=c("SUBSLAB","NEAR-SLAB","ALL"))

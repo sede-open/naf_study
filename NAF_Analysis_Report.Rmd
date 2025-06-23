@@ -1,20 +1,22 @@
 ---
 output:
   html_document: default
+  github_document: default
   #word_document: default
-  output: github_document
+  #output: github_document
 title: 'National Attentuation Factors Analysis Report'
-date: "2025-06-19"
+date: "2025-06-23"
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+### Load R Libraries
+
+```{r setup, include=TRUE,echo=TRUE}
 library(ggplot2)
-library(effects)
+suppressPackageStartupMessages(library(effects))
 library(openxlsx)
 ```
 
-## Exploratory Data Analysis
+### Input and format ANOVA data set
 
 
 ```{r inputData, include=TRUE,echo=T}
@@ -26,7 +28,7 @@ data<-data[,names(data)!="AF"] #For simplicity, omit AF column as we are modelli
 
 #Establishing and ordering the correct factor levels for each categorical variable. 
 
-data$CHEMICAL_TYPE<-factor(as.character(data$CHEMICAL_TYPE),levels=c("PCE","TCE","PCE and TCE"))
+data$CHEMICAL<-factor(as.character(data$CHEMICAL),levels=c("PCE","TCE","PCE and TCE"))
 
 data$SAMPLE_TYPE<-factor(trimws(as.character(data$SAMPLE_TYPE)))
 data$SAMPLE_TYPE<-factor(as.character(data$SAMPLE_TYPE),levels=c("SUBSLAB","NEAR-SLAB","ALL"))
