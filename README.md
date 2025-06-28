@@ -20,5 +20,5 @@ install.packages("openxlsx")
 The underlying ANOVA data set is available to download in Excel format [here](https://github.com/sede-open/naf_study/blob/main/ANOVA_Raw%20Data.xlsx).
 
 The [NAF_Analysis_Report.R](https://github.com/sede-open/naf_study/blob/main/NAF_Analysis_Report.R) is the basic R script to perform the end to end ANOVA analysis on this data set. [NAF_Analysis_Report.Rmd](https://github.com/sede-open/naf_study/blob/main/NAF_Analysis_Report.Rmd) is a R markdown equivalent script which wraps up the analysis into a visual report which can be viewed in either markdown [here](https://github.com/sede-open/naf_study/blob/main/NAF_Analysis_Report.md) or html [here](https://htmlpreview.github.io/?https://github.com/sede-open/naf_study/blob/main/NAF_Analysis_Report.html). 
-See  Fox J, Weisberg S (2018). [“Visualizing Fit and Lack of Fit in Complex Regression Models with Predictor Effect Plots and Partial Residuals.”](https://doi.org/10.18637/jss.v087.i09) Journal of Statistical Software, 87(9), 1–27.
+For details on how the predictor effects were established see  Fox J, Weisberg S (2018). [Visualizing Fit and Lack of Fit in Complex Regression Models with Predictor Effect Plots and Partial Residuals.](https://doi.org/10.18637/jss.v087.i09) Journal of Statistical Software, 87(9), 1–27.
 
