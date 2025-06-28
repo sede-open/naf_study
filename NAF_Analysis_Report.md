@@ -1,6 +1,6 @@
 National Attentuation Factors Analysis Report
 ================
-2025-06-23
+2025-06-28
 
 ### Load R Libraries
 
@@ -140,7 +140,7 @@ anova(lmSignif)
     ## ---
     ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-#### Investigate individual effects using the R “effects” package:
+#### Investigate individual predictor effects using the R “effects” package:
 
 ``` r
 for(i in SignifVars){

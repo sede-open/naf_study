@@ -5,7 +5,7 @@ output:
   #word_document: default
   #output: github_document
 title: 'National Attentuation Factors Analysis Report'
-date: "2025-06-23"
+date: "2025-06-28"
 ---
 
 ### Load R Libraries
@@ -99,7 +99,7 @@ anova(lmSignif)
 
 
 
-#### Investigate individual effects using the R "effects" package: 
+#### Investigate individual predictor effects using the R "effects" package: 
 
 ```{r Stamod4, echo=TRUE}
 
