@@ -8,7 +8,7 @@ A comprehensive study was undertaken to derive more scientifically defensible ri
 ## Statistical Analysis
 
 ### Setup
-The analysis is conducted using the open source programming language R - see <https://cran.r-project.org/> for full installation details. It is recommended to use the RStudio Integrated Development Environment to run this analysis using R - See <https://posit.co/downloads/>. 
+The analysis is conducted using the open source statistical programming language R - see <https://cran.r-project.org/> for full installation details. It is recommended to use the RStudio Integrated Development Environment to run this analysis using R - See <https://posit.co/downloads/>. 
 The following R packages are required to be installed using the following commands: 
 ```r
 install.packages("ggplot2")
